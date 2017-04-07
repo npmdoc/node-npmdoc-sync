@@ -1,0 +1,698 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/ybogdanov/node-sync">sync (v0.2.5)</a>
+</h1>
+<h4>Library that makes simple to run asynchronous functions in synchronous manner, using node-fibers.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sync">module sync</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Fiber">
+            function <span class="apidocSignatureSpan">sync.</span>Fiber
+            <span class="apidocSignatureSpan">(fn, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Fibers">
+            function <span class="apidocSignatureSpan">sync.</span>Fibers
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Future">
+            function <span class="apidocSignatureSpan">sync.</span>Future
+            <span class="apidocSignatureSpan">(timeout)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.log">
+            function <span class="apidocSignatureSpan">sync.</span>log
+            <span class="apidocSignatureSpan">(err, result)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.repl">
+            function <span class="apidocSignatureSpan">sync.</span>repl
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.sleep">
+            function <span class="apidocSignatureSpan">sync.</span>sleep
+            <span class="apidocSignatureSpan">(ms)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.waitFutures">
+            function <span class="apidocSignatureSpan">sync.</span>waitFutures
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sync.</span>Fibers.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sync.</span>Future.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sync.</span>stat</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sync.Fibers">module sync.Fibers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Fibers.Fibers">
+            function <span class="apidocSignatureSpan">sync.</span>Fibers
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Fibers.yield">
+            function <span class="apidocSignatureSpan">sync.Fibers.</span>yield
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">sync.Fibers.</span>fibersCreated</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">sync.Fibers.</span>poolSize</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sync.Fibers.prototype">module sync.Fibers.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Fibers.prototype.reset">
+            function <span class="apidocSignatureSpan">sync.Fibers.prototype.</span>reset
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Fibers.prototype.run">
+            function <span class="apidocSignatureSpan">sync.Fibers.prototype.</span>run
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sync.Fibers.prototype.throwInto">
+            function <span class="apidocSignatureSpan">sync.Fibers.prototype.</span>throwInto
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sync.Future.prototype">module sync.Future.prototype</a><ol>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sync" id="apidoc.module.sync">module sync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Fiber" id="apidoc.element.sync.Fiber">
+        function <span class="apidocSignatureSpan">sync.</span>Fiber
+        <span class="apidocSignatureSpan">(fn, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SyncFiber(fn, callback)
+{
+    var parent = Fiber.current;
+    Sync.stat.totalFibers++;
+
+    var traceError = new Error();
+    if (parent) {
+        traceError.__previous = parent.traceError;
+    }
+
+    var fiber = Fiber(function(){
+
+        Sync.stat.activeFibers++;
+
+        var fiber = Fiber.current,
+            result,
+            error;
+
+        // Set id to fiber
+        fiber.id = Sync.stat.totalFibers;
+
+        // Save the callback to fiber
+        fiber.callback = callback;
+
+        // Register trace error to the fiber
+        fiber.traceError = traceError;
+
+        // Initialize scope
+        fiber.scope = {};
+
+        // Assign parent fiber
+        fiber.parent = parent;
+
+        // Fiber string representation
+        fiber.toString = function() {
+            return 'Fiber#' + fiber.id;
+        }
+
+        // Fiber path representation
+        fiber.getPath = function() {
+            return (fiber.parent ? fiber.parent.getPath() + ' &gt; ' : '' )
+                + fiber.toString();
+        }
+
+        // Inherit scope from parent fiber
+        if (parent) {
+            fiber.scope.__proto__ = parent.scope;
+        }
+
+        // Add futures support to a fiber
+        fiber.futures = [];
+
+        fiber.waitFutures = function() {
+            var results = [];
+            while (fiber.futures.length)
+                results.push(fiber.futures.shift().result);
+            return results;
+        }
+
+        fiber.removeFuture = function(ticket) {
+            var index = fiber.futures.indexOf(ticket);
+            if (~index)
+                fiber.futures.splice(index, 1);
+        }
+
+        fiber.addFuture = function(ticket) {
+            fiber.futures.push(ticket);
+        }
+
+        // Run body
+        try {
+            // call fn and wait for result
+            result = fn(Fiber.current);
+            // if there are some futures, wait for results
+            fiber.waitFutures();
+        }
+        catch (e) {
+            error = e;
+        }
+
+        Sync.stat.activeFibers--;
+
+        // return result to the callback
+        if (callback instanceof Function) {
+            callback(error, result);
+        }
+        else if (error &amp;&amp; parent &amp;&amp; parent.callback) {
+            parent.callback(error);
+        }
+        else if (error) {
+            // TODO: what to do with such errors?
+            // throw error;
+        }
+
+    });
+
+    fiber.run();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Fibers" id="apidoc.element.sync.Fibers">
+        function <span class="apidocSignatureSpan">sync.</span>Fibers
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Fiber() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Future" id="apidoc.element.sync.Future">
+        function <span class="apidocSignatureSpan">sync.</span>Future
+        <span class="apidocSignatureSpan">(timeout)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SyncFuture(timeout)
+{
+    var self = this;
+
+    this.resolved = false;
+    this.fiber = Fiber.current;
+    this.yielding = false;
+    this.timeout = timeout;
+    this.time = null;
+
+    this._timeoutId = null;
+    this._result = undefined;
+    this._error = null;
+    this._start = +new Date;
+
+    Sync.stat.totalFutures++;
+    Sync.stat.activeFutures++;
+
+    // Create timeout error to capture stack trace correctly
+    self.timeoutError = new Error();
+    Error.captureStackTrace(self.timeoutError, arguments.callee);
+
+    this.ticket = function Future()
+    {
+        // clear timeout if present
+        if (self._timeoutId) clearTimeout(self._timeoutId);
+        // measure time
+        self.time = new Date - self._start;
+
+        // forbid to call twice
+        if (self.resolved) return;
+        self.resolved = true;
+
+        // err returned as first argument
+        var err = arguments[0];
+        if (err) {
+            self._error = err;
+        }
+        else {
+            self._result = arguments[1];
+        }
+
+        // remove self from current fiber
+        self.fiber.removeFuture(self.ticket);
+        Sync.stat.activeFutures--;
+
+        if (self.yielding &amp;&amp; Fiber.current !== self.fiber) {
+            self.yielding = false;
+            self.fiber.run();
+        }
+        else if (self._error) {
+            throw self._error;
+        }
+    }
+
+    this.ticket.__proto__ = this;
+
+    this.ticket.yield = function() {
+        while (!self.resolved) {
+            self.yielding = true;
+            if (self.timeout) {
+                self._timeoutId = setTimeout(function(){
+                    self.timeoutError.message = 'Future function timed out at ' + self.timeout + ' ms';
+                    self.ticket(self.timeoutError);
+                }, self.timeout)
+            }
+            Fiber.yield();
+        }
+        if (self._error) throw self._error;
+        return self._result;
+    }
+
+    this.ticket.__defineGetter__('result', function(){
+        return this.yield();
+    });
+
+    this.ticket.__defineGetter__('error', function(){
+        if (self._error) {
+            return self._error;
+        }
+        try {
+            this.result;
+        }
+        catch (e) {
+            return e;
+        }
+        return null;
+    });
+
+    this.ticket.__defineGetter__('timeout', function(){
+        return self.timeout;
+    });
+
+    this.ticket.__defineSetter__('timeout', function(value){
+        self.timeout = value;
+    });
+
+    // append self to current fiber
+    this.fiber.addFuture(this.ticket);
+
+    return this.ticket;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+})
+```
+
+Parallel execution:
+
+```javascript
+var Sync = require('sync'),
+	Future = Sync.<span class="apidocCodeKeywordSpan">Future</span>();
+
+// Run in a fiber
+Sync(function(){
+	try {
+		// Three function calls in parallel
+		var foo = asyncFunction.future(null, 2, 3);
+		var bar = asyncFunction.future(null, 5, 5);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.log" id="apidoc.element.sync.log">
+        function <span class="apidocSignatureSpan">sync.</span>log
+        <span class="apidocSignatureSpan">(err, result)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">log = function (err, result)
+{
+    if (err) return console.error(err.stack || err);
+    if (arguments.length == 2) {
+        if (result === undefined) return;
+        return console.log(result);
+    }
+    console.log(Array.prototyle.slice.call(arguments, 1));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+// Run in a fiber
+Sync(function(){
+	
+	// Function.prototype.sync() interface is same as Function.prototype.call() - first argument is 'this' context
+	var result = asyncFunction.sync(null, 2, 3);
+	console.<span class="apidocCodeKeywordSpan">log</span>(result); // 5
+
+	// Read file synchronously without blocking whole process? no problem
+	var source = require('fs').readFile.sync(null, __filename);
+    console.log(String(source)); // prints the source of this example itself
+})
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.repl" id="apidoc.element.sync.repl">
+        function <span class="apidocSignatureSpan">sync.</span>repl
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">repl = function () {
+
+    var repl = require('repl');
+
+    // Start original repl
+    var r = repl.start.apply(repl, arguments);
+
+    // Wrap line watchers with Fiber
+    var newLinsteners = []
+    r.rli.listeners('line').map(function(f){
+        newLinsteners.push(function(a){
+            Sync(function(){
+                require.cache[__filename] = module;
+                f(a);
+            }, Sync.log)
+        })
+    })
+    r.rli.removeAllListeners('line');
+    while (newLinsteners.length) {
+        r.rli.on('line', newLinsteners.shift());
+    }
+
+    // Assign Sync to repl context
+    r.context.Sync = Sync;
+
+    return r;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.sleep" id="apidoc.element.sync.sleep">
+        function <span class="apidocSignatureSpan">sync.</span>sleep
+        <span class="apidocSignatureSpan">(ms)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sleep = function (ms)
+{
+    var fiber = Fiber.current;
+    if (!fiber) {
+        throw new Error('Sync.sleep() can be called only inside of fiber');
+    }
+
+    setTimeout(function(){
+        fiber.run();
+    }, ms);
+
+    Fiber.yield();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	// we can use yield here
+	// yield();
+	
+	// or throw an exception!
+	// throw new Error('something went wrong');
+	
+	// or even sleep
+	// Sync.<span class="apidocCodeKeywordSpan">sleep</span>(200);
+	
+	// or turn fs.readFile to non-blocking synchronous function
+	// var source = require('fs').readFile.sync(null, __filename)
+	
+	return a + b; // just return a value
+	
+}.async() // &lt;-- here we make this function friendly with async environment
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.waitFutures" id="apidoc.element.sync.waitFutures">
+        function <span class="apidocSignatureSpan">sync.</span>waitFutures
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">waitFutures = function () {
+    if (Fiber.current) {
+        Fiber.current.waitFutures();
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sync.Fibers" id="apidoc.module.sync.Fibers">module sync.Fibers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Fibers.Fibers" id="apidoc.element.sync.Fibers.Fibers">
+        function <span class="apidocSignatureSpan">sync.</span>Fibers
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Fiber() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Fibers.yield" id="apidoc.element.sync.Fibers.yield">
+        function <span class="apidocSignatureSpan">sync.Fibers.</span>yield
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">yield = function () { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sync.Fibers.prototype" id="apidoc.module.sync.Fibers.prototype">module sync.Fibers.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Fibers.prototype.reset" id="apidoc.element.sync.Fibers.prototype.reset">
+        function <span class="apidocSignatureSpan">sync.Fibers.prototype.</span>reset
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reset() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Fibers.prototype.run" id="apidoc.element.sync.Fibers.prototype.run">
+        function <span class="apidocSignatureSpan">sync.Fibers.prototype.</span>run
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function run() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sync.Fibers.prototype.throwInto" id="apidoc.element.sync.Fibers.prototype.throwInto">
+        function <span class="apidocSignatureSpan">sync.Fibers.prototype.</span>throwInto
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function throwInto() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sync.Future.prototype" id="apidoc.module.sync.Future.prototype">module sync.Future.prototype</a></h1>
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
