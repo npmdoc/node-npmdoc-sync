@@ -56,6 +56,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.sync.sync">
+            function <span class="apidocSignatureSpan"></span>sync
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.sync.Fiber">
             function <span class="apidocSignatureSpan">sync.</span>Fiber
             <span class="apidocSignatureSpan">(fn, callback)</span>
@@ -210,6 +219,86 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.sync" id="apidoc.module.sync">module sync</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sync.sync" id="apidoc.element.sync.sync">
+        function <span class="apidocSignatureSpan"></span>sync
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sync = function (obj) {
+
+    var fiber = Fiber.current,
+        err, result,
+        yielded = false;
+
+    // Create virtual callback
+    var syncCallback = function (callbackError, callbackResult, otherArgs) {
+        // forbid to call twice
+        if (syncCallback.called) return;
+        syncCallback.called = true;
+
+        if (callbackError) {
+            err = callbackError;
+        }
+        else if (otherArgs) {
+            // Support multiple callback result values
+            result = [];
+            for (var i = 1, l = arguments.length; i &lt; l; i++) {
+                result.push(arguments[i]);
+            }
+        }
+        else {
+            result = callbackResult;
+        }
+
+        // Resume fiber if yielding
+        if (yielded) fiber.run();
+    }
+
+    // Prepare args (remove first arg and add callback to the end)
+    // The cycle is used because of slow v8 arguments materialization
+    for (var i = 1, args = [], l = arguments.length; i &lt; l; i++) {
+        args.push(arguments[i]);
+    }
+    args.push(syncCallback);
+
+    // call async function
+    this.apply(obj, args);
+
+    // wait for result
+    if (!syncCallback.called) {
+        yielded = true;
+        Fiber.yield();
+    }
+
+    // Throw if err
+    if (err) throw err;
+
+    return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+		callback(null, a + b);
+	})
+}
+
+// Run in a fiber
+Sync(function(){
+	
+	// Function.prototype.<span class="apidocCodeKeywordSpan">sync</span>() interface is same as Function.prototype.call() - first
+argument is 'this' context
+	var result = asyncFunction.sync(null, 2, 3);
+	console.log(result); // 5
+
+	// Read file synchronously without blocking whole process? no problem
+	var source = require('fs').readFile.sync(null, __filename);
+    console.log(String(source)); // prints the source of this example itself
+})
+...</pre></li>
+    </ul>
+
 
 
     <h2>
